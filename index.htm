@@ -1,13 +1,77 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team App</title>
+    <style>
+        /* Add some basic styling for the form */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-<h1>Deliciousness in every bite!</h1>
-<p>Every cookie made at the Kevin Cookie company is crafted with only the finest ingredients. 
-Butter from grass fed cows. Unbleached flour with the best flavor and textures. Organic sugar only from India. 
-Eggs from chickens are free range. Even our water is special. 
-It comes from the Cascade Mountain springs that we hike up to retrieve. Baking is our passion and we take it very seriously.</p>
-FixTemp new branch in git
-Just updating to learn how i can do a pull request 00000000000000000
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input[type="text"], input[type="email"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Team App</h1>
+    <form id="teamForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br>
+
+        <input type="submit" value="Add Member">
+    </form>
+
+    <div id="memberList">
+        <!-- Member information will be displayed here -->
+    </div>
+
+    <script>
+        // JavaScript code to handle form submission and display members
+        const teamForm = document.getElementById("teamForm");
+        const memberList = document.getElementById("memberList");
+
+        teamForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const dob = document.getElementById("dob").value;
+
+            const memberInfo = document.createElement("div");
+            memberInfo.innerHTML = `<p><strong>Name:</strong> ${name}</p>
+                                    <p><strong>Email:</strong> ${email}</p>
+                                    <p><strong>Date of Birth:</strong> ${dob}</p>`;
+
+            memberList.appendChild(memberInfo);
+
+            // Clear form fields after submission
+            teamForm.reset();
+        });
+    </script>
 </body>
 </html>
